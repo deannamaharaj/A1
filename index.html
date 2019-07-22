@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Assignment 1 for Deanna Maharaj</title>
+            <link rel="stylesheet" type="text/css" href="indexCss.css">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+            <h1>Assignment 1<br> Deanna Maharaj<br>Instructor: Maninder Kaur Tatla</h1>
+            <hr>
+            <script>
+                alert("Welcome to my rock, paper, scissors game!");
+                var winner= "";
+                var playGame = true;
+                var computerPoints = 0;
+                var userPoints = 0;
+                var computerChoice;
+                var userChoice;
+                do { 
+                    
+                //Prompt user to enter 1, 2 or 3. Anything else entered will ask them to choose again.
+                     do {
+                        userChoice = prompt("Enter 1 for rock.\nEnter 2 for paper.\nEnter 3 for scissors.");
+                    } while (userChoice != 1 && userChoice != 2 && userChoice != 3);
+                    
+                //Have the computer choose 1, 2 or 3 randomly.  
+                var randomNum = Math.random();
+                if (randomNum <= 0.34) {
+                    computerChoice = 1;
+                } else if (randomNum > 0.67) {
+                    computerChoice = 2;
+                } else {
+                    computerChoice = 3;
+                }
+                
+                if (computerChoice === 1) {
+                    alert("The computer chose Rock!");
+                } else if (computerChoice === 2){
+                    alert("The computer chose Paper!");
+                } else {
+                    alert("The computer chose Scissors!");
+                }
+                
+                //compare user and computer choices, award points and display alert.
+                if ((userChoice == 1 && computerChoice == 1) ||
+                    (userChoice == 2 && computerChoice == 2) ||
+                    (userChoice == 3 && computerChoice == 3)) 
+                {
+                    computerPoints++;
+                    userPoints++;
+                    alert("You and the computer had the same choice. Tie!" +
+                            "\n Your Points: " + userPoints + "\n Computer Points: " + computerPoints);
+                } else if ((userChoice == 1 && computerChoice === 3) || 
+                           (userChoice == 2 && computerChoice === 1) ||
+                           (userChoice == 3 && computerChoice === 2))
+                {
+                    userPoints++;
+                    alert("You win this round!" +
+                            "\n Your Points: " + userPoints + "\n Computer Points: " + computerPoints);   
+                } else {
+                    computerPoints++;
+                    alert("The computer wins this round." +
+                            "\n Your Points: " + userPoints + "\n Computer Points: " + computerPoints);
+                }
+               
+                playGame = confirm("Would you like to play again?");
+                
+            } while (playGame === true);
+            
+            if (playGame === false){
+                if (userPoints>computerPoints){
+                    winner = "You! :)";
+                } else if (userPoints < computerPoints){
+                    winner = "The computer! :(";
+                } else {
+                    winner =  "Tied!"
+                }
+                alert("Your final score is: " + userPoints + "." +
+                      "\nThe computer's final score is: " + computerPoints + "." +
+                      "\nWinner: " + winner);
+            }
+            </script>
+        </body>
+    </html>
